@@ -39,6 +39,20 @@ const pageContent = document.querySelector("#content");
 pageContent.append(header, main, footer);
 
 /* -------------------------------------------------------------------------- */
+/*                         Hightlight selected button                         */
+/* -------------------------------------------------------------------------- */
+function buttonSelected(option) {
+  const btns = document.querySelectorAll(".menu__btn");
+  btns.forEach((btn) => {
+    if (btn.classList.contains(`btn-${option}`)) {
+      btn.classList.add("btn-selected");
+    } else {
+      btn.classList.remove("btn-selected");
+    }
+  });
+}
+
+/* -------------------------------------------------------------------------- */
 /*                        Display Main Content Function                       */
 /* -------------------------------------------------------------------------- */
 function displayMainContent(option) {
@@ -57,8 +71,9 @@ function displayMainContent(option) {
       break;
     default:
   }
-  moduleElement.classList.add("main__element");
+  moduleElement.classList.add("main__element", option);
   main.appendChild(moduleElement);
+  buttonSelected(option);
 }
 
 /* -------------------------------------------------------------------------- */
